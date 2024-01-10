@@ -1,0 +1,59 @@
+<!-- candidate.component.html  -->
+<div *ngIf="!isHomePage() && authService.getCurrentUser()?.role === userRoles.RECRUITER">
+  <h2>Candidates</h2>
+  
+  <form (ngSubmit)="addCandidate()">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" [(ngModel)]="name" required>
+
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" [(ngModel)]="email" required>
+
+    <label for="contactNo">Phone:</label>
+    <input type="text" id="contactNo" name="contactNo" [(ngModel)]="contactNo" required>
+    
+      <button class="btn btn-outline-success"  type="submit">{{ selectedCandidateIndex !== null ? 'Edit Candidate' : 'Add Candidate' }}</button>
+  </form>
+</div>
+
+
+  <!-- -->
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Candidate Details</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              
+            <a ><button class="btn btn-outline-success" routerLink="/candidate-details" >Modify</button></a>
+          </div> -->
+        </div>
+    </nav>
+  
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Candidate ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">contactNo</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let candidate of candidates; let i = index">
+        <th>{{candidate.id}}</th>
+        <th>{{candidate.name}}</th>
+        <th>{{candidate.email}}</th>
+        <th>{{candidate.contactNo}}</th>
+        <div *ngIf="!isHomePage()">
+          <td>
+            <button type="button" class="btn btn-outline-primary" (click)="editCandidate(i)">Edit</button>
+            <!-- <button type="button" class="btn btn-outline-danger" (click)="deleteCandidate(i)">Delete</button> -->
+          </td>
+        </div>
+      </tr>
+    </tbody>
+  </table>
+ 
