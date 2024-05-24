@@ -26,7 +26,8 @@ b.	List of Top 10 Products Sold in a Month
 **Technology Stack:**
 1.	Java, Spring Boot, Spring Framework etc.
 2.	HTML, CSS, Angular 11, JavaScript etc. 
-3.	MySQL  
+3.	MySQL
+
 **Steps:**
 1.	Design the UI 
 2.	Identify the Database tables required.
